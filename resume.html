@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Dua Noor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Signika+Negative:wght@300..700&family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Oswald", sans-serif;
+            background: #f5f0fa;
+            color: #222;
+            padding: 20px;
+        }
+        .resume {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(173, 73, 225, 0.15);
+            overflow: hidden;
+        }
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #7b2d8e, #AD49E1);
+            color: #fff;
+            padding: 40px 50px;
+        }
+        .header h1 {
+            font-size: 52px;
+            font-family: "Acme", sans-serif;
+            letter-spacing: 2px;
+        }
+        .header .subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            margin-top: 6px;
+            opacity: 0.92;
+        }
+        .header .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 18px;
+            font-size: 15px;
+        }
+        .header .contact-row a {
+            color: #fff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.2s;
+        }
+        .header .contact-row a:hover { opacity: 0.8; }
+        .header .contact-row i { font-size: 16px; }
+        /* BODY */
+        .body { padding: 40px 50px; }
+        .section { margin-bottom: 32px; }
+        .section-title {
+            font-family: "Acme", sans-serif;
+            font-size: 22px;
+            color: #7b2d8e;
+            border-bottom: 3px solid #AD49E1;
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .section p, .section li {
+            font-family: "Signika Negative", sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #444;
+        }
+        /* SUMMARY */
+        .summary p { font-size: 15px; }
+        /* PROJECTS */
+        .project-item { margin-bottom: 22px; }
+        .project-item .proj-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+        .project-item .proj-header h3 {
+            font-family: "Acme", sans-serif;
+            font-size: 18px;
+            color: #222;
+        }
+        .project-item .proj-header .date {
+            font-family: "Signika Negative", sans-serif;
+            font-size: 13px;
+            color: #888;
+        }
+        .project-item .proj-header .role {
+            font-family: "Signika Negative", sans-serif;
+            font-size: 14px;
+            color: #AD49E1;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 2px;
+        }
+        .project-item p {
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 32px;
+        }
+        .skills-grid .skill-cat {
+            font-family: "Acme", sans-serif;
+            font-size: 15px;
+            color: #7b2d8e;
+            margin-bottom: 4px;
+        }
+        .skills-grid .skill-items {
+            font-family: "Signika Negative", sans-serif;
+            font-size: 14px;
+            color: #444;
+        }
+        /* EDUCATION */
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+        .edu-item .edu-left h3 {
+            font-family: "Acme", sans-serif;
+            font-size: 17px;
+            color: #222;
+        }
+        .edu-item .edu-left .edu-detail {
+            font-family: "Signika Negative", sans-serif;
+            font-size: 14px;
+            color: #555;
+        }
+        .edu-item .edu-right {
+            text-align: right;
+            font-family: "Signika Negative", sans-serif;
+            font-size: 14px;
+            color: #555;
+            min-width: 140px;
+        }
+        .edu-item .edu-right .year { font-weight: 600; color: #7b2d8e; }
+        /* COURSES */
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .course-item:last-child { border-bottom: none; }
+        .course-item .course-name { font-weight: 600; font-size: 15px; }
+        .course-item .course-provider { font-size: 14px; color: #888; }
+        /* CERTIFICATIONS */
+        .cert-item {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cert-item:last-child { border-bottom: none; }
+        .cert-item .cert-year { font-weight: 600; color: #7b2d8e; min-width: 60px; }
+        .cert-item .cert-desc { font-size: 14px; color: #444; flex: 1; }
+        /* LANGUAGES */
+        .lang-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 32px;
+        }
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            font-family: "Signika Negative", sans-serif;
+            font-size: 15px;
+            padding: 4px 0;
+        }
+        .lang-item .lang-name { font-weight: 600; }
+        .lang-item .lang-level { color: #888; }
+        /* HOBBIES */
+        .hobby-item {
+            font-family: "Signika Negative", sans-serif;
+            font-size: 14px;
+            padding: 4px 0;
+            display: flex;
+            gap: 8px;
+        }
+        .hobby-item i { color: #AD49E1; width: 18px; margin-top: 3px; }
+        /* RESPONSIVE */
+        @media screen and (max-width: 768px) {
+            body { padding: 10px; }
+            .header { padding: 24px 20px; }
+            .header h1 { font-size: 32px; }
+            .header .subtitle { font-size: 16px; }
+            .header .contact-row { gap: 12px; font-size: 13px; flex-direction: column; }
+            .body { padding: 24px 20px; }
+            .section-title { font-size: 18px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .lang-grid { grid-template-columns: 1fr; }
+            .edu-item .edu-right { text-align: left; margin-top: 4px; }
+            .project-item .proj-header { flex-direction: column; }
+        }
+        @media screen and (max-width: 480px) {
+            .header h1 { font-size: 26px; }
+            .header .subtitle { font-size: 14px; }
+            .section-title { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>DUA NOOR</h1>
+            <div class="subtitle">Computer Science Student | Full-Stack & AI Enthusiast</div>
+            <div class="contact-row">
+                <a href="mailto:bint.ey.noor@gmail.com"><i class="fas fa-envelope"></i> bint.ey.noor@gmail.com</a>
+                <a href="https://www.linkedin.com/in/dua-nooor/" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/dua-nooor</a>
+                <a href="https://github.com/DUANOOR-123" target="_blank"><i class="fab fa-github"></i> DUANOOR-123</a>
+                <span><i class="fas fa-map-marker-alt"></i> ISB-PAK</span>
+            </div>
+        </div>
+
+        <!-- BODY -->
+        <div class="body">
+
+            <!-- SUMMARY -->
+            <div class="section summary">
+                <div class="section-title">SUMMARY</div>
+                <p>Driven BS Computer Science student with experience in C++, Java, and full-stack web technologies. Developed functional applications and explored AI algorithms with analytical research. Strong logical thinker and quick learner seeking to contribute and grow in a professional development environment.</p>
+            </div>
+
+            <!-- PROJECTS -->
+            <div class="section">
+                <div class="section-title">PROJECTS</div>
+
+                <div class="project-item">
+                    <div class="proj-header">
+                        <h3>AI Comparative Research Project</h3>
+                        <span class="date">01/2026</span>
+                        <span class="role">Researcher & Implementation Analyst</span>
+                    </div>
+                    <p>Studied and implemented regression, classification, and clustering algorithms as part of AI coursework. Analyzed model performance by comparing overfitting and underfitting behavior and documented findings in a structured research report.</p>
+                </div>
+
+                <div class="project-item">
+                    <div class="proj-header">
+                        <h3>Full-Stack E-Commerce Website</h3>
+                        <span class="date">12/2025</span>
+                        <span class="role">Full-Stack Developer</span>
+                    </div>
+                    <p>Designed and developed a complete e-commerce platform using HTML, CSS, JavaScript, Node.js, Express.js, and MongoDB. Built both frontend and backend components, implemented database integration, and developed core functionalities such as product management and user authentication.</p>
+                </div>
+
+                <div class="project-item">
+                    <div class="proj-header">
+                        <h3>Java Chess Game</h3>
+                        <span class="date">10/2025</span>
+                        <span class="role">Team Leader & UI Developer</span>
+                    </div>
+                    <p>Led a team in developing a functional chess game using Java and object-oriented programming principles. Designed and implemented the user interface and managed the overall game logic, including movement validation and rule handling. Coordinated task distribution and ensured smooth project completion.</p>
+                </div>
+            </div>
+
+            <!-- SKILLS -->
+            <div class="section">
+                <div class="section-title">SKILLS</div>
+                <div class="skills-grid">
+                    <div>
+                        <div class="skill-cat">Programming Languages</div>
+                        <div class="skill-items">C++, Java, JavaScript, HTML, CSS</div>
+                    </div>
+                    <div>
+                        <div class="skill-cat">Frameworks / Libraries</div>
+                        <div class="skill-items">Node.js, Express.js</div>
+                    </div>
+                    <div>
+                        <div class="skill-cat">Databases</div>
+                        <div class="skill-items">MongoDB, SQL</div>
+                    </div>
+                    <div>
+                        <div class="skill-cat">Other</div>
+                        <div class="skill-items">OOP, Data Structures, AI/ML Fundamentals</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRAINING / COURSES -->
+            <div class="section">
+                <div class="section-title">TRAINING / COURSES</div>
+                <div class="course-item">
+                    <div><span class="course-name">AI for Everyone</span> &mdash; <span style="font-size:14px;color:#555;">Gained foundational knowledge of AI concepts, algorithms, and applications.</span></div>
+                    <span class="course-provider">DeepLearning.AI</span>
+                </div>
+                <div class="course-item">
+                    <div><span class="course-name">Full-Stack Developer Certification</span> &mdash; <span style="font-size:14px;color:#555;">Completed hands-on training in frontend and backend web development, including HTML, CSS, JavaScript, Node.js, Express, and database integration.</span></div>
+                    <span class="course-provider">Zero To Mastery</span>
+                </div>
+            </div>
+
+            <!-- EDUCATION -->
+            <div class="section">
+                <div class="section-title">EDUCATION</div>
+
+                <div class="edu-item">
+                    <div class="edu-left">
+                        <h3>Bachelor of Science in Computer Science (BSCS)</h3>
+                        <div class="edu-detail">IMCG F-6/2 (Affiliated with Quaid-i-Azam University) &mdash; Semester 6 (In Progress)</div>
+                    </div>
+                    <div class="edu-right">
+                        <div class="year">2023 - 2027</div>
+                        <div>Expected Graduation: 2027</div>
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-left">
+                        <h3>Intermediate in Computer Science (ICS)</h3>
+                        <div class="edu-detail">IMCG F-7/2 College (PG), Islamabad</div>
+                    </div>
+                    <div class="edu-right">
+                        <div class="year">2021 - 2023</div>
+                        <div>886 / 1100 &mdash; A+</div>
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-left">
+                        <h3>Matriculation (Science)</h3>
+                        <div class="edu-detail">IMCG F-7/2 School, Islamabad</div>
+                    </div>
+                    <div class="edu-right">
+                        <div class="year">2019 - 2021</div>
+                        <div>1034 / 1100 &mdash; A+</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CERTIFICATIONS / AWARDS / PARTICIPATIONS -->
+            <div class="section">
+                <div class="section-title">CERTIFICATIONS / AWARDS / PARTICIPATIONS</div>
+                <div class="cert-item">
+                    <span class="cert-year">2016</span>
+                    <span class="cert-desc"><strong>National ISMO</strong> &mdash; Participated in ISMO Competition and certified by National Olympic ISMO Foundation.</span>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-year">2023</span>
+                    <span class="cert-desc"><strong>I.M.C.G F-7/2 ISB</strong> &mdash; Achieved 3rd position in a Graphical Design competition.</span>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-year">2023</span>
+                    <span class="cert-desc"><strong>I.M.C.G F-7/2 ISB</strong> &mdash; Participated in a Mathematics project and received certification conducted by H.E.C.</span>
+                </div>
+            </div>
+
+            <!-- LANGUAGES -->
+            <div class="section">
+                <div class="section-title">LANGUAGES</div>
+                <div class="lang-grid">
+                    <div class="lang-item"><span class="lang-name">English</span> <span class="lang-level">Proficient</span></div>
+                    <div class="lang-item"><span class="lang-name">French</span> <span class="lang-level">Intermediate</span></div>
+                    <div class="lang-item"><span class="lang-name">Urdu</span> <span class="lang-level">Native</span></div>
+                    <div class="lang-item"><span class="lang-name">Punjabi</span> <span class="lang-level">Cultural</span></div>
+                </div>
+            </div>
+
+            <!-- HOBBIES / INTERESTS -->
+            <div class="section">
+                <div class="section-title">HOBBIES / INTERESTS</div>
+                <div class="hobby-item"><i class="fas fa-pen-fancy"></i> Writing articles &mdash; officially uploaded on Instagram page myd@irees</div>
+                <div class="hobby-item"><i class="fas fa-code"></i> Web Development &mdash; keen interest and actively working on it</div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
